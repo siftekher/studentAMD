@@ -77,6 +77,10 @@ select {
 .has-error input[type="text"], .has-error input[type="email"], .has-error select {
     border: 1px solid #a94442;
 }
+
+
+
+
 </style>
 
 <script type="text/javascript">
@@ -91,7 +95,11 @@ select {
 
 
 <div class="container">
-
+  <div class="row">
+      <div class="col-xs-12 section5 text-right">
+           <a href="/majestic/run.php">Back to List</a>
+      </div>
+  </div>
 <section class="footer-form padding-top-xl padding-bottom-xl" aria-label="Contact Form">
   <div class="wrapper">
     <div class="container">
@@ -206,6 +214,15 @@ select {
                   <div class="help-block with-errors"></div>
                </div>
             </div>
+
+            <div class="row">
+               <span class="control-fileupload">
+                  <label for="file">Choose a file :</label>
+                  <input type="file" id="file" name="file">
+                </span>
+
+            </div>
+
 
             <div class="form-group text-center">
             <input class="submit center-block btn btn-primary" value="Submit" type="submit">

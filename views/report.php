@@ -1,6 +1,6 @@
 <?php
 /*
-echo 'FROM LIST TEMPLATE';
+echo 'FROM REPORT TEMPLATE';
 echo '<PRE>';
 print_r($rows);
 echo '</PRE>';
@@ -41,20 +41,15 @@ echo '</PRE>';
   <h1>Student List</h1>
   <div class="row">
       <div class="col-xs-12 section5 text-right">
-            <a href="/majestic/run.php/Student/add">ADD NEW </a> ｜ <a href="/majestic/run.php/Student/report">Report</a>
+            <a href="/majestic/run.php/Student/add">ADD NEW </a> ｜ <a href="/majestic/run.php">List</a>
       </div>
   </div>
 
   <table class="table table-bordered sortable" id="student">
-
     <thead>
-
       <tr>
-        <th>No</th>
-        <th>Name</th>
-        <th>School Year</th>
-        <th>Email</th>
-        <th>Action</th>
+        <th>Enrollment Year</th>
+        <th>No. Of Student</th>
       </tr>
     </thead>
 
@@ -62,12 +57,9 @@ echo '</PRE>';
      <?php if(count($rows) > 0) {
      foreach($rows as $row) {
      ?>
-      <tr id="tr_<?php echo $row->student_id;?>">
-        <td><?php echo $row->student_id;?></td>
-        <td><?php echo $row->first_name .' '. $row->last_name ;?></td>
-        <td><?php echo $row->current_school_year;?></td>
-        <td><?php echo '<a href="mailto:'.$row->email.'">'.$row->email.'</a>';?></td>
-        <td><a href="/majestic/run.php/Student/edit/<?php echo $row->student_id;?>">Edit</a> ｜ <a href="Javascript:void(0);" onClick="deleteStudent(<?php echo $row->student_id;?>)">Delete</a></td>
+      <tr>
+        <td><?php echo $row->e_year;?></td>
+        <td><?php echo $row->total ;?></td>
       </tr>
    <?php }  }?>
 

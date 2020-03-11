@@ -6,6 +6,7 @@
    define('CLASS_DIR',      DOCUMENT_ROOT   . '/majestic/classes');
    define('SUPER_CONTROLLER_URL_PREFIX',      '/majestic/run.php/');
    define('CONTROLLER_DIR',   DOCUMENT_ROOT . '/majestic/controllers/');
+   define('UPLOADED_IMAGE_DIR',         DOCUMENT_ROOT . '/majestic/uploaded_images');
   
    set_include_path(get_include_path() . PATH_SEPARATOR . CONFIG_DIR);
    set_include_path(get_include_path() . PATH_SEPARATOR . CLASS_DIR);

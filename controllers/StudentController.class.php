@@ -37,6 +37,7 @@ class Student
          case 'delete'         : $screen = $this->studentDelete();   break;
          case 'save_student'   : $screen = $this->saveStudent();     break;
          case 'update_student' : $screen = $this->updateStudent();     break;
+         case 'report'         : $screen = $this->studentReport();     break;
          default          : $screen = $this->studentList();
       }
 
@@ -62,7 +63,7 @@ class Student
 
       require_once LIST_TEMPLATE;
       exit;
-      //return $this->template->parseTemplate(STUDENT_LIST,$data);
+
    }
 
    function saveStudent() {
@@ -100,10 +101,29 @@ class Student
 
           $studentId = $studentObj->create();
 
-          //$this->studentList();
+          $this->uploadAttachment($studentId);
           header("location: /majestic/run.php");
           exit;
    }
+
+      function uploadAttachment($studentId)
+      {
+         $src  = $_FILES['file']['tmp_name'];
+         $name = $_FILES['file']['name'];
+         $ext = pathinfo($name, PATHINFO_EXTENSION);
+         $dst = UPLOADED_IMAGE_DIR . '/' . $studentId .'.'. $ext;
+
+         chmod(UPLOADED_IMAGE_DIR, 777);
+         if (!empty($_FILES["file"]["name"])) {
+            if(@move_uploaded_file($src, $dst))
+            {
+               $data = "{$_FILES['file']['name']}:$dst:{$_FILES['file']['size']}";
+               //echo $data;
+            }
+         }
+         return;
+      }
+
 
  
  /**
@@ -189,6 +209,9 @@ class Student
       $params['data']  = $data;
 
       $this->db->update($params);
+
+      $this->uploadAttachment($studentId);
+
       header("location: /majestic/run.php");
       exit;
    }
@@ -215,6 +238,18 @@ class Student
 
           header("location: /majestic/run.php");
           exit;
+   }
+
+   function studentReport(){
+	  $query  = "SELECT YEAR(enrollment_date) as e_year, COUNT(*) as total FROM student GROUP BY YEAR(enrollment_date)" ;
+      try
+      {
+         $rows = $this->db->select($query);
+      }
+      catch(Exception $Exception){}
+
+       require_once REPORT_TEMPLATE;
+       exit;
    }
 
 

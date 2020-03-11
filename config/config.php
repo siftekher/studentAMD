@@ -32,7 +32,7 @@
   define('LIST_TEMPLATE',  VIEWS_DIR . 'list.php');
   define('ADD_TEMPLATE',  VIEWS_DIR . 'add_student.php');
   define('EDIT_TEMPLATE',  VIEWS_DIR . 'edit_student.php');
-
+  define('REPORT_TEMPLATE',  VIEWS_DIR . 'report.php');
 
   # Database tables
   define('STUDENT_TBL', 'student');

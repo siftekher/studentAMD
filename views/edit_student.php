@@ -90,6 +90,12 @@ select {
 
 
 <div class="container">
+  <div class="row">
+      <div class="col-xs-12 section5 text-right">
+           <a href="/majestic/run.php">Back to List</a>
+      </div>
+  </div>
+
 <?php if(count($rows) > 0) {
 foreach($rows as $row) {
      ?>
@@ -208,6 +214,14 @@ foreach($rows as $row) {
                   <div class="help-block with-errors"></div>
                </div>
             </div>
+
+            <div class="row">
+               <span class="control-fileupload">
+                  <label for="file">Choose a file :</label>
+                  <input type="file" id="file" name="file">
+                </span>
+            </div>
+
 
             <div class="form-group text-center">
             <input class="submit center-block btn btn-primary" value="Update" type="submit">
